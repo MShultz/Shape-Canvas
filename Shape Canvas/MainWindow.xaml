@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shape_Canvas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Shape Creator" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65*"/>
             <ColumnDefinition Width="35*" />
         </Grid.ColumnDefinitions>
-        <Canvas Background="GreenYellow" MouseRightButtonDown="Canvas_MouseRightButtonDown" MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
-        <Canvas Grid.Column="2" Background="CornflowerBlue"/>
+        <Canvas x:Name="MyCanvas" Background="GreenYellow"  MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
+        <Grid Grid.Column="2" Background="CornflowerBlue"/>
         <Button Grid.Column="2" Width="100" Height="50" Background="LightGray" Click="Button_Click">Clear</Button>
         
     </Grid>

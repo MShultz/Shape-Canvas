@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShultzM_ExtensionMethods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,24 +21,26 @@ namespace Shape_Canvas
     /// </summary>
     public partial class MainWindow : Window
     {
+        BasicShapeFactory factory;
         public MainWindow()
         {
             InitializeComponent();
+            factory = new BasicShapeFactory(MyCanvas);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            MyCanvas.Children.RemoveRange(0, MyCanvas.Children.Count);
         }
 
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            Point mouseLoc = e.GetPosition(MyCanvas);
+            String option = (1.Random() == 0 ? "Ellipses" : "Rectangle");
+            Shape current = factory.CreateShape(option);
+            MyCanvas.Children.Add(current);
+            Canvas.SetTop(current, mouseLoc.Y - current.Height/2);
+            Canvas.SetLeft(current, mouseLoc.X - current.Width/2);
         }
     }
 }
